@@ -5,7 +5,7 @@
         <!-- Bagian atas -->
         <div class="head-content">
           <h1 class="title">
-            Welcome, ........
+            Welcome, Blablabla
           </h1>
 
           <div class="columns">
