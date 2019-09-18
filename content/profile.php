@@ -1,5 +1,6 @@
 <?php include '../layout/header.php';?>
   <?php        
+    include('../process/db.php');
     $query = mysqli_query($con,"SELECT * FROM users") or die(mysqli_error($con));   
     $data = mysqli_fetch_assoc($query)
   ?>  
