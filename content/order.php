@@ -14,11 +14,11 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="https://bulma.io/images/placeholders/480x480.png">
+              <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
             </figure>
           </div>
           <div class="column">
-            <h3 class="title">Krabby Patty</h3>
+            <h3 class="title">Krabby Cheese</h3>
             <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
           </div>
         </div>
@@ -38,13 +38,18 @@
               <input class="textarea" type="text">
             </div>
           </div>
-
+      
           <button type="submit" class="button is-success is-medium" style="border-radius: 150px;">
             Buy Item
           </button>
-          <button type="submit" class="button is-light is-medium" style="border-radius: 150px;">
-            Cancel
-          </button>
+          
+          <a href="./menu.php">
+            <button class="button is-light is-medium" style="border-radius: 150px;">
+              Cancel
+            </button>
+          </a>
+         
+          
         </form>
 
       </div>
