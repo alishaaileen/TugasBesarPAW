@@ -15,13 +15,13 @@
           <div class="columns">
             <div class="column is-2">
               <figure class="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
+                <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
               </figure>
             </div>
             <div class="column">
-              <h3 class="title">Krabby Patty</h3>
+              <h3 class="title">Krabby Cheese</h3>
               <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
-              <a href="">
+              <a href="./order.php">
                 <button class="button is-success is-medium" style="border-radius: 150px;">
                   Buy Item
                 </button>
@@ -34,13 +34,13 @@
           <div class="columns">
             <div class="column is-2">
               <figure class="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPjI9Nd7bwA7y9GaE7eBxgKS9zCDW3uFxzZtd4rWTP6HVL4VqZKg">
               </figure>
             </div>
             <div class="column">
-              <h3 class="title">Krabby Patty</h3>
+              <h3 class="title">Krabby Double Cheese</h3>
               <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
-              <a href="">
+              <a href="./orderdouble.php">
                 <button class="button is-success is-medium" style="border-radius: 150px;">
                   Buy Item
                 </button>
@@ -53,13 +53,13 @@
           <div class="columns">
             <div class="column is-2">
               <figure class="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
+                <img src="https://pbs.twimg.com/media/Csp6EO5WEAQN0UL.jpg">
               </figure>
             </div>
             <div class="column">
-              <h3 class="title">Krabby Patty</h3>
+              <h3 class="title">Krabby Triple Cheese</h3>
               <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
-              <a href="">
+              <a href="./order.php">
                 <button class="button is-success is-medium" style="border-radius: 150px;">
                   Buy Item
                 </button>
