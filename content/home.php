@@ -5,7 +5,6 @@
         <!-- Bagian atas -->
         <div class="head-content">
           <h1 class="title">
-            Welcome, ........
           </h1>
 
           <div class="columns">
@@ -16,13 +15,13 @@
             </div>
             <div class="column">
               <h2 class="title">........</h2>
-                <a href="">
+                <a href="./order.php">
                   <button class="button is-success">
                     Order
                   </button>
                 </a>
 
-                <a href="">
+                <a href="./voucher.php">
                   <button class="button is-link">
                     Vouchers
                   </button>
