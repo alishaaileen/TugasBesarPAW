@@ -5,6 +5,7 @@
         <!-- Bagian atas -->
         <div class="head-content">
           <h1 class="title">
+            Welcome, ahay
           </h1>
 
           <div class="columns">
