@@ -16,7 +16,7 @@
             </div>
             <div class="column">
               <h2 class="title">........</h2>
-                <a href="./order.php">
+                <a href="./menu.php">
                   <button class="button is-success">
                     Order
                   </button>
