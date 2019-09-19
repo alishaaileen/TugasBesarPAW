@@ -14,11 +14,11 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+              <img src="https://pbs.twimg.com/media/Csp6EO5WEAQN0UL.jpg">
             </figure>
           </div>
           <div class="column">
-            <h3 class="title">Krabby Cheese</h3>
+            <h3 class="title">Krabby Triple Cheese</h3>
             <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
           </div>
         </div>
