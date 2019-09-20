@@ -48,7 +48,7 @@ echo '<!DOCTYPE html>
     
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-danger" style="border-radius: 50px;">
+              <a class="button is-danger" style="border-radius: 50px;" href="../process/logoutProcess.php">
                 Log out
               </a>
             </div>

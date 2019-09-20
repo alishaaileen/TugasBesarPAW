@@ -1,5 +1,21 @@
 <?php
-echo '<!DOCTYPE html>
+
+session_start();
+if(isset($_SESSION['isLogin'])) {
+  if($_SESSION['isLogin'] == true) {
+    header("location: content/home.php");
+  }
+  else {
+    include("process/db.php");
+  }
+}
+else {
+  include("process/db.php");
+}
+
+?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -27,7 +43,7 @@ echo '<!DOCTYPE html>
         </figure>
       </div> -->
     </section>
-
+    
     <section class="section">
       <div class="kotak">
 
@@ -35,38 +51,24 @@ echo '<!DOCTYPE html>
           <h1 class="title has-text-white">Log In</h1>
         </div>
         <div class="content">
-          <form action="" action="POST">
+          <form name="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" type="email" placeholder="e-mail">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+              <label class="label">Username</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Username" name="username">
               </div>
-              <p class="help is-danger">This email is invalid</p>
             </div>
             
             <div class="field">
               <label class="label">Password</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" type="password">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-key"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+              <div class="control">
+                <input class="input" type="password" name="password" placeholder="Password">
               </div>
-              <p class="help is-danger">Incorrect Password</p>
             </div>
-            
+            <p style="display: none;" id="help" class="help is-danger">Incorrect username or password</p>
             <div class="field">
               <div class="control">
-                <button type="submit" class="button is-success">Log In</button>
+                <button type="submit" class="button is-success" name="login">Log In</button>
               </div>
             </div>
           </form>
@@ -83,5 +85,49 @@ echo '<!DOCTYPE html>
       </p>
     </footer>
   </body>
-</html>';
+  <script>
+  function isInvalid() {
+    danger = document.getElementById("help");
+    console.log(danger);
+    danger.style.display = "block";
+  }
+</script>
+</html>
+
+<?php
+  $username = $password = "";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = test_input($_POST["username"]);
+    $password = test_input($_POST["password"]);
+  
+    $query = mysqli_query($con, "SELECT * FROM user WHERE username = '$username' Limit 1") or die(mysqli_error($con));
+  
+    if(mysqli_num_rows($query) == 0) {
+      echo '<script>alert("Username not found"); window.location = "../login_page.php"</script>';
+    }
+    else {
+      $user = mysqli_fetch_assoc($query);
+      if(password_verify($password, $user['password'])) {
+        // session_start();
+        $_SESSION['isLogin'] = true;
+        $_SESSION['user'] = $user;
+        echo 'window.location = "content/home.php"</script>';
+      }
+      else {
+        echo '
+          <script type="text/javascript">
+            isInvalid();
+          </script>
+        ';
+      }
+    }
+  }
+  
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 ?>
