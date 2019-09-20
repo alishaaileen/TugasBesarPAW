@@ -23,7 +23,7 @@ function cekNama() {
     nama.classList.remove('is-danger')
 
     if(nama.value === "" || re.test(nama.value) === false) {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         nama.classList.add('is-danger')
         nama.focus()
         return false
@@ -40,8 +40,9 @@ function cekUsername() {
     username.classList.remove('is-danger')
 
     if(username.value === "") {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         username.classList.add('is-danger')
+        username.focus()
         return false
     }
     else
@@ -57,8 +58,9 @@ function cekEmail() {
     email.classList.remove('is-danger')
 
     if(email.value === "" || re.test(email.value) === false) {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         email.classList.add('is-danger')
+        email.focus()
         return false
     }
     else
@@ -74,8 +76,9 @@ function cekNoTelp() {
     no_telp.classList.remove('is-danger')
 
     if(no_telp.value === "" || re.test(no_telp.value) === false) {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         no_telp.classList.add('is-danger')
+        no_telp.focus
         return false
     }
     else
@@ -90,8 +93,9 @@ function cekTglLahir() {
     tgl_lahir.classList.remove('is-danger')
 
     if(tgl_lahir.value === "") {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         tgl_lahir.classList.add('is-danger')
+        tgl_lahir.focus()
         return false
     }
     else
@@ -106,8 +110,9 @@ function cekGender() {
     jenis_kelamin.classList.remove('is-danger')
 
     if(jenis_kelamin.value === "") {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         jenis_kelamin.classList.add('is-danger')
+        jenis_kelamin.focus()
         return false
     }
     else
@@ -122,8 +127,9 @@ function cekPassword() {
     password.classList.remove('is-danger')
 
     if(password.value === "") {
-        danger[0].style.display = "block";
+        danger[0].style.display = "block"
         password.classList.add('is-danger')
+        password.focus()
         return false
     }
     else
