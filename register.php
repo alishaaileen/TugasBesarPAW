@@ -36,86 +36,73 @@ echo '<!DOCTYPE html>
           <h1 class="title has-text-white">Register</h1>
         </div>
         <div class="content">
-          <form action="" action="POST">
+          <form name="register" action="process/registerProcess.php" method="POST">
             <div class="field">
               <label class="label">Name</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="text" placeholder="username">
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                <input class="input" type="text" placeholder="Full name" name="nama_user">
               </div>
-              <p class="help is-danger">This name is invalid</p>
+              <p style="display: none" class="nama_user help is-danger">This name is invalid</p>
             </div>
 
             <div class="field">
               <label class="label">Username</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="text" placeholder="username">
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                <input class="input" type="text" placeholder="Username" name="username">
               </div>
-              <p class="help is-danger">This username is invalid</p>
+              <p style="display: none" class="username help is-danger">This username is invalid</p>
             </div>
 
             <div class="field">
               <label class="label">Email</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="email" placeholder="username">
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                <input class="input" type="email" placeholder="Email" name="email">
               </div>
-              <p class="help is-danger">This email is invalid</p>
+              <p style="display: none" class="email help is-danger">This email is invalid</p>
             </div>
 
             <div class="field">
               <label class="label">Phone</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="text" placeholder="username">
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                <input class="input" type="text" placeholder="08XX XXXX XXXX" name="no_hp">
               </div>
-              <p class="help is-danger">This phone number is invalid</p>
+              <p style="display: none" class="no_hp help is-danger">This phone number is invalid</p>
             </div>
 
             <div class="field">
               <label class="label">Date of birth</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="date">
+                <input class="input" type="date" name="tgl_lahir">
               </div>
-              <p class="help is-danger">This date of birth is invalid</p>
+              <p style="display: none" class="tgl_lahir help is-danger">This date of birth is invalid</p>
             </div>
             
             <div class="field">
               <label class="label">Sex</label>
               <div class="control">
                 <div class="select">
-                  <select>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="rather not say">Rather not say</option>
+                  <select class="jenis_kelamin" name="jenis_kelamin">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                    <option value="2">Rather not say</option>
                   </select>
                 </div>
+                <p style="display: none" class="jenis_kelamin help is-danger">Please choose one</p>
               </div>
             </div>
             
             <div class="field">
               <label class="label">Password</label>
               <div class="control has-icons-right">
-                <input class="input is-danger" type="password">
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                <input class="input" type="password" name="password">
               </div>
-              <p class="help is-danger">This password is invalid</p>
+              <p style="display: none" class="password help is-danger">This password is invalid</p>
             </div>
+            <input type="hidden" name="bio">
             
             <div class="field">
               <div class="control">
-                <button type="submit" class="button is-link">Sign Up</button>
+                <button name="register" type="submit" class="button is-link" onclick="return cekAll()">Sign Up</button>
               </div>
             </div>
           </form>
@@ -132,5 +119,6 @@ echo '<!DOCTYPE html>
       </p>
     </footer>
   </body>
+  <script src="js/validateRegister.js"></script>
 </html>';
 ?>
