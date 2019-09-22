@@ -1,5 +1,5 @@
 <?php
-$dbServer="localhost:8080";
+$dbServer="localhost";
 $username="root";
 $password="";
 $dbName="tugasbe1_tubes_paw_1";
