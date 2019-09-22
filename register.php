@@ -120,8 +120,8 @@ else {
             </p>
 
             <p class="success subtitle" style="color: green; display: none;">
-              Registration done!
-              <br/>Please check your email for verification and then <a href="login.php">Log in here</a>
+              You're registered!
+              <br/>Please verify your email and then <a href="login.php">Log in here</a>
             </p>
             
             <div class="field">
@@ -160,6 +160,13 @@ else {
 </html>
 
 <?php
+  use PHPMailer\PHPMailer\PHPMailer;
+  require "PHPMailer/PHPMailer.php";
+  require "PHPMailer/SMTP.php";
+  require "PHPMailer/Exception.php";
+  require "PHPMailer/OAuth.php";
+  require "PHPMailer/POP3.php";
+
   $username = $password = $nama_user = $email = $no_hp = $tgl_Lahir = $bio =  "";
   $jenis_kelamin = 0;
 
@@ -170,19 +177,48 @@ else {
     $no_hp = test_input($_POST['no_hp']);
     $tgl_lahir = test_input($_POST['tgl_lahir']);
     $jenis_kelamin = $_POST['jenis_kelamin'];
-    $password = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
+    $password = password_hash(test_input($_POST['password']), PASSWORD_BCRYPT);
     $bio = test_input($_POST['bio']);
 
     $cekUsername = $con->query("SELECT id FROM user WHERE username = '$username'");
     if($cekUsername->num_rows > 0){
       echo '<script>isUnameExist();</script>';
     } else {
-      $input = mysqli_query($con,"INSERT INTO user(nama_user,username,email,no_hp,tgl_lahir,jenis_kelamin,password,bio) VALUES('$nama_user','$username','$email','$no_hp','$tgl_lahir','$jenis_kelamin','$password','$bio')" )or die(mysqli_error($con));
+      $token = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+      $token = str_shuffle($token);
+      $token = substr($token, 0, 10);
+      $isVerified = 0;
+
+      $input = mysqli_query($con,"INSERT INTO user(nama_user,username,email,no_hp,tgl_lahir,jenis_kelamin,password,bio,token,isVerified) 
+        VALUES('$nama_user','$username','$email','$no_hp','$tgl_lahir','$jenis_kelamin','$password','$bio','$token','$isVerified')" )or die(mysqli_error($con));
       
-      if($input){
-        echo '<script>isSuccess();</script>';
+      include_once "PHPMailer/PHPMailer.php";
+
+      $mail = new PHPMailer();
+      $mail->IsSMTP();
+      $mail->SMTPSecure = 'tls';
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = "paw.klp6@gmail.com";
+      $mail->Password = "paw--klp6!@";
+      $mail->Port = 587;
+
+      $mail->setFrom('paw.klp6@gmail.com');
+      $mail->addAddress($email);
+      $mail->Subject = "[KRABBY PATTY] Please verify your email";
+      $mail->isHTML(true);
+      $mail->Body = '
+        You have registered to Krabby Patty Website.<br/>
+        Please click the link below to verify your email.
+        <br/><br/>
+        <a href="http://localhost:81/TugasBesar/accountVerified.php?email=$email&token=$token">Cick here</a>
+      ';
+
+      if($mail->send()){
+        echo '<script>isUnameExist();</script>';
       }else{
-        echo '<script>alert("failed");"</script>';
+        echo '<script>alert("Something went wrong, please try again");</script>';
+        echo $mail->ErrorInfo;
       }
     }
 

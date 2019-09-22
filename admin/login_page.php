@@ -1,16 +1,15 @@
 <?php
-
 session_start();
 if(isset($_SESSION['isLogin'])) {
   if($_SESSION['isLogin'] == true) {
-    header("location: content/home.php");
+    header("location: dashboard/");
   }
   else {
-    include("process/db.php");
+    include("db.php");
   }
 }
 else {
-  include("process/db.php");
+  include("db.php");
 }
 
 ?>
@@ -30,10 +29,10 @@ else {
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
-    <section id="#bg" class="hero section is-small is-primary">
+    <section id="#bg" class="hero section is-small is-link">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Log In</h1>
+          <h1 class="title">Admin Log In</h1>
         </div>
       </div>
       <!-- <div class="bg"></div>
@@ -48,14 +47,14 @@ else {
       <div class="kotak">
 
         <div class="head">
-          <h1 class="title has-text-white">Log In</h1>
+          <h1 class="title has-text-white">Admin Log In</h1>
         </div>
         <div class="content">
           <form name="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="field">
-              <label class="label">Username</label>
+              <label class="label">Email</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Username" name="username">
+                <input class="input" type="text" placeholder="Email" name="email">
               </div>
             </div>
             
@@ -69,11 +68,10 @@ else {
             <p style="display: none;" id="unverified" class="help is-danger">Please verify your email first!</p>
             <div class="field">
               <div class="control">
-                <button type="submit" class="button is-success" name="login">Log In</button>
+                <button type="submit" class="button is-link" name="login">Log In</button>
               </div>
             </div>
           </form>
-          <p class="help">Don\'t have an account? <a href="register.php">Register here</a></p>
 
         </div>
       </div>
@@ -96,38 +94,31 @@ else {
 </html>
 
 <?php
-  $username = $password = "";
+  $email = $password = "";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = test_input($_POST["username"]);
+    $email = test_input($_POST["email"]);
     $password = test_input($_POST["password"]);
   
-    $query = mysqli_query($con, "SELECT * FROM user WHERE username = '$username' Limit 1") or die(mysqli_error($con));
+    $query = mysqli_query($con, "SELECT * FROM data WHERE email = '$email' Limit 1") or die(mysqli_error($con));
   
     if(mysqli_num_rows($query) == 0) {
-      echo '<script>alert("Username not found"); window.location = "../login_page.php"</script>';
+      echo '
+      <script type="text/javascript">
+        isInvalid("incorrect");
+      </script>';
     }
     else {
       $user = mysqli_fetch_assoc($query);
-      if(password_verify($password, $user['password'])) {
-        if ($user['isVerified'] == 0) {
-          echo '
-            <script type="text/javascript">
-              isInvalid("unverified");
-            </script>
-          ';
-        } else {
+      if(password_verify($password, $user['Password'])) {
           $_SESSION['isLogin'] = true;
           $_SESSION['user'] = $user;
-          echo 'window.location = "content/home.php"</script>';
-        }
-      }
-      else {
-        echo '
-          <script type="text/javascript">
-            isInvalid("incorrect");
-          </script>
-        ';
+          echo 'window.location = "dashboard"</script>';
+        } else {
+          echo '
+            <script type="text/javascript">
+              isInvalid("incorrect");
+            </script>';
       }
     }
   }
