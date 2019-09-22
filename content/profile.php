@@ -1,7 +1,10 @@
 <?php include '../layout/header.php';?>
+<?php session_start(); ?>
   <?php        
     include('../process/db.php');
-    $query = mysqli_query($con,"SELECT * FROM user") or die(mysqli_error($con));   
+    $user = $_SESSION['user'];
+    $id = $user['id'];
+    $query = mysqli_query($con,"SELECT * FROM user WHERE id='$id'") or die(mysqli_error($con));   
     $data = mysqli_fetch_assoc($query)
   ?>  
     <section id="content" class="section">
