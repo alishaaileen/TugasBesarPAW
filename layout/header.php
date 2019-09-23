@@ -42,7 +42,7 @@ echo '<!DOCTYPE html>
             Vouchers
           </a>
 
-          <a id="nav-vouchers" class="navbar-item" href="order_show.php">
+          <a id="nav-view_orders" class="navbar-item" href="order_show.php">
             View Orders
           </a>
     
