@@ -29,6 +29,7 @@
                         <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
                       </figure>
                     </div>
+                    <input type="hidden" name="id" value='.$data['id'].'?>
                     <div class="column">
                       <h3 class="title">' .$data['nama_makanan'].'</h3>
                       <p class="subtitle">'.$data['deskripsi'].'</p>
