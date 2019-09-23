@@ -35,11 +35,15 @@ echo '<!DOCTYPE html>
           </a>
     
           <a id="nav-order" class="navbar-item" href="menu.php">
-            Order
+            Menu
           </a>
 
           <a id="nav-vouchers" class="navbar-item" href="voucher.php">
             Vouchers
+          </a>
+
+          <a id="nav-vouchers" class="navbar-item" href="order_show.php">
+            View Orders
           </a>
     
           <a id="nav-profile" class="navbar-item" href="profile.php">
