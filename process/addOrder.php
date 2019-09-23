@@ -3,15 +3,14 @@
 if(isset($_POST['addOrder'])){
     include('./db.php');
 
-    $id = $_POST['id'];
     $nama_makanan = $_POST['nama_makanan'];
     $jumlah = $_POST['jumlah'];
     $pesan = $_POST['pesan'];
 
-    $input = mysqli_query($con,"INSERT INTO order_menu(id,nama_makanan,jumlah,pesan)VALUES('$id','$nama_makanan','1','$pesan')")
+    $input = mysqli_query($con,"INSERT INTO order_menu(nama_makanan,jumlah,pesan)VALUES('$nama_makanan','$jumlah','$pesan')")
     or die(mysqli_error($con));
     if($input){
-        echo '<script>alert("successfully ordered!"); window.location = "../content/order.php"</script>';
+        echo '<script>alert("successfully ordered!"); window.location = "../content/menu.php"</script>';
     }else{
         echo '<script>alert("failed to update"); window.location = "../content/order.php"</script>';
     }
