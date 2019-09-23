@@ -1,7 +1,6 @@
 <?php 
   include '../layout/header.php';
   include '../process/db.php';
-  $id = $_GET['id'];
 ?>
 
     <section id="content" class="section">
