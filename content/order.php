@@ -34,6 +34,8 @@
           <div class="field">
             <label class="label">Amount</label>
             <div class="control">
+              <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+              <input type="hidden" name="nama_makanan" value="<?php echo $data['nama_makanan']; ?>">
               <input class="input is-danger" type="number" name="jumlah" style="width: 10%;">
             </div>
             <p class="help is-danger">This amount is invalid</p>
@@ -49,15 +51,13 @@
           <button type="submit" class="button is-success is-medium" name="addOrder" style="border-radius: 150px;">
             Buy Item
           </button>
-          
-          <a href="./menu.php">
+        </form>
+        </br>
+        <a href="./menu.php">
             <button class="button is-light is-medium" style="border-radius: 150px;">
               Cancel
             </button>
           </a>
-         
-          
-        </form>
         <?php } ?>
       </div>
     </section>
