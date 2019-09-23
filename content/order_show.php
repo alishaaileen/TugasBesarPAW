@@ -111,6 +111,6 @@
     <?php include '../layout/footer.php';?>
   </body>
   <script>
-    document.getElementById('nav-order').classList.add('is-active')
+    document.getElementById('nav-view_orders').classList.add('is-active')
   </script>
 </html>
