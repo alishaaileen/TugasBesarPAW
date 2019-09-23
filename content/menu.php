@@ -2,7 +2,7 @@
   include '../layout/header.php';
   include '../process/db.php';
 ?>
-  <form action="./order.php"></form>
+  <form action="./order.php" method="GET"></form>
     <section id="content" class="section">
       <div class="container">
         <!-- Bagian atas -->
