@@ -1,4 +1,7 @@
-<?php include '../layout/header.php';?>
+<?php 
+  include '../layout/header.php';
+  include '../process/db.php';
+?>
 
     <section id="content" class="section">
       <div class="container">
