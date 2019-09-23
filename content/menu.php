@@ -26,7 +26,7 @@
                       <div class="columns">
                       <div class="column is-2">
                       <figure class="image is-128x128">
-                        <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+                        <img src="'.$data['gambar'].'">
                       </figure>
                     </div>
                     <input type="hidden" name="id" value='.$data['id'].'?>
