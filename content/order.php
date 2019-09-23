@@ -21,7 +21,8 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+              <img src="<?php echo $data["gambar"]; ?>">
+              <input type="hidden" name="gambar" value="<?php echo $data['gambar']; ?>">
             </figure>
           </div>
           <div class="column">
@@ -64,6 +65,6 @@
     <?php include '../layout/footer.php';?>
   </body>
   <script>
-    document.getElementById('nav-home').classList.add('is-active')
+    document.getElementById('nav-order').classList.add('is-active')
   </script>
 </html>
