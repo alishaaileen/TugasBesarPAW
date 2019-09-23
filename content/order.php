@@ -1,7 +1,7 @@
 <?php 
   include '../layout/header.php';
   include '../process/db.php';
-  $id = $_GET['id'];
+  //$id = $_GET['id'];
   $query = mysqli_query($con, "SELECT * FROM menu WHERE id='$id'")or die(mysql_error($con));
   $nomor = 1;
   while($data = mysqli_fetch_array($query)){
@@ -32,10 +32,10 @@
 
         <form name="addOrder" action="../process/addOrder.php" method="POST">
           <div class="field">
-            <label class="label">Amount</label>
-            <div class="control">
               <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
               <input type="hidden" name="nama_makanan" value="<?php echo $data['nama_makanan']; ?>">
+            <label class="label">Amount</label>
+            <div class="control">
               <input class="input is-danger" type="number" name="jumlah" style="width: 10%;">
             </div>
             <p class="help is-danger">This amount is invalid</p>
