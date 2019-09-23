@@ -1,7 +1,16 @@
-<?php include '../layout/header.php';?>
+<?php 
+  include '../layout/header.php';
+  include '../process/db.php';
+  $id = $_GET['id'];
+?>
 
     <section id="content" class="section">
       <div class="container">
+        <?php
+          $query = mysqli_query($con, "SELECT * FROM menu WHERE id='$id'")or die(mysql_error($con));
+          $nomor = 1;
+          while($data = mysqli_fetch_array($query)){
+        ?>
         <!-- Bagian atas -->
         <div class="head-content">
           <h1 class="title">
@@ -18,16 +27,16 @@
             </figure>
           </div>
           <div class="column">
-            <h3 class="title">Krabby Cheese</h3>
-            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
+            <h3 class="title"><?php echo $data["nama_makanan"]; ?></h3>
+            <p class="subtitle"><?php echo $data["deskripsi"]; ?></p>
           </div>
         </div>
 
-        <form action="">
+        <form name="addOrder" action="../process/addOrder.php" method="POST">
           <div class="field">
             <label class="label">Amount</label>
             <div class="control">
-              <input class="input is-danger" type="number" style="width: 10%;">
+              <input class="input is-danger" type="number" name="jumlah" style="width: 10%;">
             </div>
             <p class="help is-danger">This amount is invalid</p>
           </div>
@@ -35,11 +44,11 @@
           <div class="field">
             <label class="label">Message</label>
             <div class="control">
-              <input class="textarea" type="text">
+              <input class="textarea" name="pesan" type="text">
             </div>
           </div>
       
-          <button type="submit" class="button is-success is-medium" style="border-radius: 150px;">
+          <button type="submit" class="button is-success is-medium" name="addOrder" style="border-radius: 150px;">
             Buy Item
           </button>
           
@@ -51,7 +60,7 @@
          
           
         </form>
-
+        <?php } ?>
       </div>
     </section>
     
