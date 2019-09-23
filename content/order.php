@@ -1,15 +1,14 @@
 <?php 
   include '../layout/header.php';
   include '../process/db.php';
+  $id = $_GET['id'];
+  $query = mysqli_query($con, "SELECT * FROM menu WHERE id='$id'")or die(mysql_error($con));
+  $nomor = 1;
+  while($data = mysqli_fetch_array($query)){
 ?>
 
     <section id="content" class="section">
       <div class="container">
-        <?php
-          $query = mysqli_query($con, "SELECT * FROM menu WHERE id='$id'")or die(mysql_error($con));
-          $nomor = 1;
-          while($data = mysqli_fetch_array($query)){
-        ?>
         <!-- Bagian atas -->
         <div class="head-content">
           <h1 class="title">
