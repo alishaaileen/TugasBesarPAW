@@ -161,11 +161,12 @@ else {
 
 <?php
   use PHPMailer\PHPMailer\PHPMailer;
-  require "PHPMailer/PHPMailer.php";
-  require "PHPMailer/SMTP.php";
-  require "PHPMailer/Exception.php";
-  require "PHPMailer/OAuth.php";
-  require "PHPMailer/POP3.php";
+  use PHPMailer\PHPMailer\Exception;
+  
+  require 'vendor/phpmailer/phpmailer/src/Exception.php';
+  require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+  require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+  require 'vendor/autoload.php';
 
   $username = $password = $nama_user = $email = $no_hp = $tgl_Lahir = $bio =  "";
   $jenis_kelamin = 0;
@@ -179,6 +180,7 @@ else {
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $password = password_hash(test_input($_POST['password']), PASSWORD_BCRYPT);
     $bio = test_input($_POST['bio']);
+    $profile_image = "";
 
     $cekUsername = $con->query("SELECT id FROM user WHERE username = '$username'");
     if($cekUsername->num_rows > 0){
@@ -189,12 +191,13 @@ else {
       $token = substr($token, 0, 10);
       $isVerified = 0;
 
-      $input = mysqli_query($con,"INSERT INTO user(nama_user,username,email,no_hp,tgl_lahir,jenis_kelamin,password,bio,token,isVerified) 
-        VALUES('$nama_user','$username','$email','$no_hp','$tgl_lahir','$jenis_kelamin','$password','$bio','$token','$isVerified')" )or die(mysqli_error($con));
+      $input = mysqli_query($con,"INSERT INTO user(nama_user,username,email,no_hp,tgl_lahir,jenis_kelamin,password,bio,token,isVerified,profile_image) 
+        VALUES('$nama_user','$username','$email','$no_hp','$tgl_lahir','$jenis_kelamin','$password','$bio','$token','$isVerified','$profile_image')" )or die(mysqli_error($con));
+        
+    $linkVerif = "http://paw-aileen.tugasbesarkami.com/accountVerified.php?email=$email&token=$token";
       
-      include_once "PHPMailer/PHPMailer.php";
-
       $mail = new PHPMailer();
+    //   $mail->SMTPDebug = 2;
       $mail->IsSMTP();
       $mail->SMTPSecure = 'tls';
       $mail->Host = 'smtp.gmail.com';
@@ -203,19 +206,19 @@ else {
       $mail->Password = "paw--klp6!@";
       $mail->Port = 587;
 
-      $mail->setFrom('paw.klp6@gmail.com');
-      $mail->addAddress($email);
+      $mail->setFrom('paw.klp6@gmail.com', 'Krabby Patty');
+      $mail->addAddress($email, $nama_user);
       $mail->Subject = "[KRABBY PATTY] Please verify your email";
       $mail->isHTML(true);
       $mail->Body = '
         You have registered to Krabby Patty Website.<br/>
         Please click the link below to verify your email.
         <br/><br/>
-        <a href="http://localhost:81/TugasBesar/accountVerified.php?email=$email&token=$token">Cick here</a>
+        <a href="'.$linkVerif.'">Cick here</a>
       ';
 
       if($mail->send()){
-        echo '<script>isUnameExist();</script>';
+        echo '<script>isSuccess();</script>';
       }else{
         echo '<script>alert("Something went wrong, please try again");</script>';
         echo $mail->ErrorInfo;
