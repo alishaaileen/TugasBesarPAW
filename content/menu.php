@@ -2,7 +2,7 @@
   include '../layout/header.php';
   include '../process/db.php';
 ?>
-
+  <form action="./order.php"></form>
     <section id="content" class="section">
       <div class="container">
         <!-- Bagian atas -->
@@ -21,7 +21,30 @@
           }
           else {
             $no = 1;
-            while($data = mysqli_fetch_assoc($query)) {?>
+            while($data = mysqli_fetch_assoc($query)) {
+              echo '<div class="kotak">
+                      <div class="columns">
+                      <div class="column is-2">
+                      <figure class="image is-128x128">
+                        <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+                      </figure>
+                    </div>
+                    <div class="column">
+                      <h3 class="title">' .$data['nama_makanan'].'</h3>
+                      <p class="subtitle">'.$data['deskripsi'].'</p>
+              <a href="./order.php?id='.$data['id'].'">
+                <button class="button is-success is-medium" style="border-radius: 150px;">
+                  Buy Item
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>';
+        $no++;
+        }
+        }
+        ?>
+        <!--
         <div class="kotak">
           <div class="columns">
             <div class="column is-2">
@@ -30,8 +53,8 @@
               </figure>
             </div>
             <div class="column">
-              <h3 class="title"><?php echo $data['nama_makanan'];?></h3>
-              <p class="subtitle"><?php echo $data['deskripsi'];?></p>
+              <h3 class="title"></h3>
+              <p class="subtitle"></p>
               <a href="./order.php">
                 <button class="button is-success is-medium" style="border-radius: 150px;">
                   Buy Item
@@ -40,8 +63,8 @@
             </div>
           </div>
         </div>
-          <?php $no++;}}?>
-        <!--
+          
+        
         <div class="kotak">
           <div class="columns">
             <div class="column is-2">
