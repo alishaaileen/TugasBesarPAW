@@ -6,8 +6,9 @@ if(isset($_POST['addOrder'])){
     $nama_makanan = $_POST['nama_makanan'];
     $jumlah = $_POST['jumlah'];
     $pesan = $_POST['pesan'];
+    $gambar = $_POST['gambar'];
 
-    $input = mysqli_query($con,"INSERT INTO order_menu(nama_makanan,jumlah,pesan)VALUES('$nama_makanan','$jumlah','$pesan')")
+    $input = mysqli_query($con,"INSERT INTO order_menu(nama_makanan,jumlah,pesan,gambar)VALUES('$nama_makanan','$jumlah','$pesan','$gambar')")
     or die(mysqli_error($con));
     if($input){
         echo '<script>alert("successfully ordered!"); window.location = "../content/menu.php"</script>';
