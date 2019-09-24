@@ -45,7 +45,7 @@
                   </figure>
                 </div>
                 <div class="column">
-                  <h3 class="title">Krabby Patty</h3>
+                  <h3 class="title">Krabby Pattyy</h3>
                   <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
                 </div>
               </div>
