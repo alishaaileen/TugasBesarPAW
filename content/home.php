@@ -1,4 +1,5 @@
-<?php include '../layout/header.php';?>
+<?php include '../layout/header.php';
+include '../process/db.php';?>
 
     <section id="content" class="section">
       <div class="container">
@@ -32,6 +33,37 @@
         </div>
         
         <!-- Bagian tengah -->
+
+        <?php
+           $query = mysqli_query($con, "SELECT * FROM promo") or die(mysqli_error($con));
+           if(mysqli_num_rows($query) == 0) {
+            echo '<tr><td colspan="7">Tidak ada menu</td></tr>';
+          }
+          else {
+            $no = 1;
+            while($data = mysqli_fetch_assoc($query)) {
+              echo '<div class="kotak">
+                      <div class="columns">
+                        <div class="column is-2">
+                          <figure class="image is-128x128">
+                            <img src="' .$data['gambar'].'">
+                          </figure>
+                        </div>
+                        <input type="hidden" name="id" value='.$data['id'].'?>
+                          <div class="column">
+                            <h3 class="title">' .$data['nama_promo'].'</h3>
+                            <p class="subtitle"> '.$data['deskripsi_promo'].'</p>
+                            
+                            </a>
+                          </div>
+                      </div>
+                    </div>';
+                  $no++;
+              }
+            }
+        ?>
+
+        <!--
         <section class="section">
           <div class="container">
 
@@ -41,7 +73,7 @@
               <div class="columns">
                 <div class="column is-2">
                   <figure class="image is-128x128">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <img src="http://katalogpromosi.com/wp-content/uploads/2019/03/minimal-store.jpg">
                   </figure>
                 </div>
                 <div class="column">
@@ -55,7 +87,7 @@
               <div class="columns">
                 <div class="column is-2">
                   <figure class="image is-128x128">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <img src="https://pbs.twimg.com/media/DNBv-QgW0AIcQlw.png">
                   </figure>
                 </div>
                 <div class="column">
@@ -81,6 +113,7 @@
 
           </div>
         </section>
+        -->
       </div>
     </section>
     
