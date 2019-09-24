@@ -24,27 +24,27 @@
             while($data = mysqli_fetch_assoc($query)) {
               echo '<div class="kotak">
                       <div class="columns">
-                      <div class="column is-2">
-                      <figure class="image is-128x128">
-                        <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
-                      </figure>
-                    </div>
-                    <input type="hidden" name="id" value='.$data['id'].'?>
-                    <div class="column">
-                      <h3 class="title">' .$data['nama_makanan'].'</h3>
-                      <p class="subtitle"> Amount: '.$data['jumlah'].'</p>
-                      <p class="subtitle"> Message: '.$data['pesan'].'</p>
-              <a href="../process/deleteOrder.php?id='.$data['id'].'" onclick="return confirm(\'Are You Sure?\')">
-                <button class="button is-danger is-medium" style="border-radius: 150px;">
-                    Delete
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>';
-        $no++;
-        }
-        }
+                        <div class="column is-2">
+                          <figure class="image is-128x128">
+                            <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+                          </figure>
+                        </div>
+                        <input type="hidden" name="id" value='.$data['id'].'?>
+                          <div class="column">
+                            <h3 class="title">' .$data['nama_makanan'].'</h3>
+                            <p class="subtitle"> Amount: '.$data['jumlah'].'</p>
+                            <p class="subtitle"> Message: '.$data['pesan'].'</p>
+                            <a href="../process/deleteOrder.php?id='.$data['id'].'" onclick="return confirm(\'Are You Sure?\')">
+                              <button class="button is-danger is-medium" style="border-radius: 150px;">
+                              Delete
+                              </button>
+                            </a>
+                          </div>
+                      </div>
+                    </div>';
+                  $no++;
+              }
+            }
         ?>
         <!--
         <div class="kotak">
