@@ -65,7 +65,8 @@ else {
                 <input class="input" type="password" name="password" placeholder="Password">
               </div>
             </div>
-            <p style="display: none;" id="help" class="help is-danger">Incorrect username or password</p>
+            <p style="display: none;" id="incorrect" class="help is-danger">Incorrect username or password</p>
+            <p style="display: none;" id="unverified" class="help is-danger">Please verify your email first!</p>
             <div class="field">
               <div class="control">
                 <button type="submit" class="button is-success" name="login">Log In</button>
@@ -86,8 +87,8 @@ else {
     </footer>
   </body>
   <script>
-  function isInvalid() {
-    danger = document.getElementById("help");
+  function isInvalid(invalid) {
+    danger = document.getElementById(invalid);
     console.log(danger);
     danger.style.display = "block";
   }
@@ -109,15 +110,22 @@ else {
     else {
       $user = mysqli_fetch_assoc($query);
       if(password_verify($password, $user['password'])) {
-        // session_start();
-        $_SESSION['isLogin'] = true;
-        $_SESSION['user'] = $user;
-        echo 'window.location = "content/home.php"</script>';
+        if ($user['isVerified'] == 0) {
+          echo '
+            <script type="text/javascript">
+              isInvalid("unverified");
+            </script>
+          ';
+        } else {
+          $_SESSION['isLogin'] = true;
+          $_SESSION['user'] = $user;
+          echo 'window.location = "content/home.php"</script>';
+        }
       }
       else {
         echo '
           <script type="text/javascript">
-            isInvalid();
+            isInvalid("incorrect");
           </script>
         ';
       }

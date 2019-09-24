@@ -7,19 +7,18 @@ if(isset($_POST['update'])){
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
-
-    if ($password === $old_password) {
-        if($new_password === $confirm_password){
-            $input = mysqli_query($con,"UPDATE users SET password='$new_password' WHERE id='$id'")or die(mysqli_error($con));
-            echo '<div class="notification is-success">Success</div>';
-        }else{
-            echo '<div class="notification is-danger">Invalid Password</div>';
-        }
-     }
-     else {
-        echo '<div class="notification is-danger">Invalid Password</div>';
-     }
     
+     if (password_verify($old_password, $password)) {
+        if($new_password === $confirm_password){
+            $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+            $input = mysqli_query($con,"UPDATE user SET password='$new_password' WHERE id='$id'")or die(mysqli_error($con));
+            echo '<script>alert("Success!"); window.location = "../content/profile.php"</script>';
+        }else{
+            echo '<script>alert("Confirmation Password Invalid!"); window.location = "../content/profile.php"</script>"</script>';
+        }
+    } else {
+        echo '<script>alert("Old Password Input Invalid!");window.location = "../content/profile.php"</script>';
+    }
 }else{
     echo '<script>window.history.back()</script>';
 }

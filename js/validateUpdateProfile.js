@@ -10,9 +10,10 @@ function cekAll() {
     ) {
         return false
     }
-
     return true
 }
+
+
 
 function cekNama() {
     var re = /^[a-zA-Z\s]*$/
@@ -21,7 +22,7 @@ function cekNama() {
 
     danger[0].style.display = "none";
     nama.classList.remove('is-danger')
-
+    
     if(nama.value === "" || re.test(nama.value) === false) {
         danger[0].style.display = "block"
         nama.classList.add('is-danger')

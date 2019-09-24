@@ -1,4 +1,11 @@
-<?php include '../layout/header.php';?>
+<?php 
+  include '../layout/header.php';
+  include '../process/db.php';
+  $id = $_GET['id'];
+  $query = mysqli_query($con, "SELECT * FROM menu WHERE id='$id'")or die(mysql_error($con));
+  $nomor = 1;
+  while($data = mysqli_fetch_array($query)){
+?>
 
     <section id="content" class="section">
       <div class="container">
@@ -14,20 +21,22 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785.jpg">
+              <img src="<?php echo $data["gambar"]; ?>">
+              <input type="hidden" name="gambar" value="<?php echo $data['gambar']; ?>">
             </figure>
           </div>
           <div class="column">
-            <h3 class="title">Krabby Cheese</h3>
-            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum repudiandae atque assumenda ullam unde tempore dignissimos expedita laborum dolorem eum, asperiores beatae nesciunt at possimus quibusdam in hic consectetur!</p>
+            <h3 class="title"><?php echo $data["nama_makanan"]; ?></h3>
+            <p class="subtitle"><?php echo $data["deskripsi"]; ?></p>
           </div>
         </div>
 
-        <form action="">
+        <form name="addOrder" action="../process/addOrder.php" method="POST">
           <div class="field">
+              <input type="hidden" name="nama_makanan" value="<?php echo $data['nama_makanan']; ?>">
             <label class="label">Amount</label>
             <div class="control">
-              <input class="input is-danger" type="number" style="width: 10%;">
+              <input class="input is-danger" type="number" name="jumlah" style="width: 10%;">
             </div>
             <p class="help is-danger">This amount is invalid</p>
           </div>
@@ -35,29 +44,27 @@
           <div class="field">
             <label class="label">Message</label>
             <div class="control">
-              <input class="textarea" type="text">
+              <input class="textarea" name="pesan" type="text">
             </div>
           </div>
       
-          <button type="submit" class="button is-success is-medium" style="border-radius: 150px;">
+          <button type="submit" class="button is-success is-medium" name="addOrder" style="border-radius: 150px;">
             Buy Item
           </button>
-          
-          <a href="./menu.php">
+        </form>
+        </br>
+        <a href="./menu.php">
             <button class="button is-light is-medium" style="border-radius: 150px;">
               Cancel
             </button>
           </a>
-         
-          
-        </form>
-
+        <?php } ?>
       </div>
     </section>
     
     <?php include '../layout/footer.php';?>
   </body>
   <script>
-    document.getElementById('nav-home').classList.add('is-active')
+    document.getElementById('nav-order').classList.add('is-active')
   </script>
 </html>
