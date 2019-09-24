@@ -24,26 +24,26 @@
             while($data = mysqli_fetch_assoc($query)) {
               echo '<div class="kotak">
                       <div class="columns">
-                      <div class="column is-2">
-                      <figure class="image is-128x128">
-                        <img src="'.$data['gambar'].'">
-                      </figure>
-                    </div>
-                    <input type="hidden" name="id" value='.$data['id'].'?>
-                    <div class="column">
-                      <h3 class="title">' .$data['nama_makanan'].'</h3>
-                      <p class="subtitle">'.$data['deskripsi'].'</p>
-              <a href="./order.php?id='.$data['id'].'">
-                <button class="button is-success is-medium" style="border-radius: 150px;">
-                  Buy Item
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>';
-        $no++;
-        }
-        }
+                        <div class="column is-2">
+                          <figure class="image is-128x128">
+                            <img src="'.$data['gambar'].'">
+                          </figure>
+                        </div>
+                          <input type="hidden" name="id" value='.$data['id'].'?>
+                            <div class="column">
+                              <h3 class="title">' .$data['nama_makanan'].'</h3>
+                              <p class="subtitle">'.$data['deskripsi'].'</p>
+                              <a href="./order.php?id='.$data['id'].'">
+                              <button class="button is-success is-medium" style="border-radius: 150px;">
+                                Buy Item
+                              </button>
+                              </a>
+                            </div>
+                      </div>  
+                    </div>';
+                  $no++;
+              }
+            }
         ?>
         <!--
         <div class="kotak">
