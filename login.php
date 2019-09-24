@@ -73,7 +73,7 @@ else {
               </div>
             </div>
           </form>
-          <p class="help">Don\'t have an account? <a href="register.php">Register here</a></p>
+          <p class="help">Don't have an account? <a href="register.php">Register here</a></p>
 
         </div>
       </div>
