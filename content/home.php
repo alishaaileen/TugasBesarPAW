@@ -4,33 +4,40 @@ include '../process/db.php';?>
     <section id="content" class="section">
       <div class="container">
         <!-- Bagian atas -->
-        <div class="head-content">
-          <h1 class="title">
-            Welcome, User !
-          </h1>
+        <?php
+        $query = mysqli_query($con, "SELECT * FROM user") or die(mysqli_error($con));
 
-          <div class="columns">
-            <div class="column is-2">
-              <figure class="image is-128x128">
-                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-              </figure>
-            </div>
-            <div class="column">
-              <h2 class="title">........</h2>
-                <a href="./menu.php">
-                  <button class="button is-success">
-                    Order
-                  </button>
-                </a>
+        $data = mysqli_fetch_assoc($query);
+          
+        echo '<div class="head-content">
+            <h1 class="title">
+              Welcome, User !
+            </h1>
 
-                <a href="./voucher.php">
-                  <button class="button is-link">
-                    Vouchers
-                  </button>
-                </a>
+            <div class="columns">
+              <div class="column is-2">
+                <figure class="image is-128x128">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                </figure>
+              </div>
+              <div class="column">
+                <h2 class="title">
+                  ' .$data['nama_user'].'              
+                </h2>
+                  <a href="./menu.php">
+                    <button class="button is-success">
+                      Order
+                    </button>
+                  </a>
+                  <a href="./voucher.php">
+                    <button class="button is-link">
+                      Vouchers
+                    </button>
+                  </a>
+              </div>
             </div>
-          </div>
-        </div>
+          </div> ';
+        ?>
         
         <!-- Bagian tengah -->
 
@@ -53,7 +60,9 @@ include '../process/db.php';?>
                           <div class="column">
                             <h3 class="title">' .$data['nama_promo'].'</h3>
                             <p class="subtitle"> '.$data['deskripsi_promo'].'</p>
-                            
+                            <button class="button is-success">
+                              Get It!
+                            </button>
                             </a>
                           </div>
                       </div>
