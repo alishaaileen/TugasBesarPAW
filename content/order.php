@@ -21,8 +21,7 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="<?php echo $data["gambar"]; ?>">
-              <input type="hidden" name="gambar" value="<?php echo $data['gambar']; ?>">
+              <img src="<?php echo $data["gambar"]; ?>">              
             </figure>
           </div>
           <div class="column">
@@ -34,11 +33,12 @@
         <form name="addOrder" action="../process/addOrder.php" method="POST">
           <div class="field">
               <input type="hidden" name="nama_makanan" value="<?php echo $data['nama_makanan']; ?>">
+              <input type="hidden" name="gambar" value="<?php echo $data['gambar']; ?>">
             <label class="label">Amount</label>
             <div class="control">
-              <input class="input is-danger" type="number" name="jumlah" style="width: 10%;">
+              <input class="input" type="number" name="jumlah" style="width: 10%;">
             </div>
-            <p class="help is-danger">This amount is invalid</p>
+            <p id="danger" class="help">This amount is invalid</p>
           </div>
 
           <div class="field">
@@ -48,7 +48,7 @@
             </div>
           </div>
       
-          <button type="submit" class="button is-success is-medium" name="addOrder" style="border-radius: 150px;">
+          <button type="submit" onclick="return cekAmount()" class="button is-success is-medium" name="addOrder" style="border-radius: 150px;">
             Buy Item
           </button>
         </form>
@@ -66,5 +66,16 @@
   </body>
   <script>
     document.getElementById('nav-order').classList.add('is-active')
+  </script>
+  <script>
+    function cekAmount(){
+      var danger = document.getElementById('danger')
+      
+      if(document.getElementsByName('jumlah')[0].value<1){
+        danger.classList.add('is-danger')
+        return false
+      }
+      return true
+    }
   </script>
 </html>

@@ -1,5 +1,5 @@
 <?php include '../layout/header.php';?>
-
+<form action="./order.php" method="GET"></form>
     <section id="content" class="section">
       <div class="container">
         <!-- Bagian atas -->
@@ -48,7 +48,7 @@
         <!-- Bagian tengah -->
 
         <?php
-           $data2 = mysqli_query($con, "SELECT * FROM menu") or die(mysqli_error($con));
+           $data2 = mysqli_query($con, "SELECT * FROM menu WHERE status_promo='1' ") or die(mysqli_error($con));
            if(mysqli_num_rows($data2) == 0) {
             echo '<tr><td colspan="7">Tidak ada menu</td></tr>';
           }
@@ -66,8 +66,8 @@
                         <input type="hidden" name="id" value="<?php echo $data3['id'];?>">
                           <div class="column">
                             <h3 class="title"> <?php echo $data3['nama_makanan'];?></h3>
-                            <p class="subtitle"> <?php echo $data3['promo'];?></p>
-                            <a href="./order.php">  
+                            <p class="subtitle"> <?php echo $data3['nama_promo'];?></p>
+                            <a href="./order_promo.php?id=<?php echo $data3['id'] ?>">  
                               <button class="button is-success">
                                 Get It!
                               </button>
@@ -75,7 +75,7 @@
                           </div>
                       </div>
                     </div>
-            <?php
+                <?php
               }
             }
             ?>
