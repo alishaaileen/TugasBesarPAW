@@ -1,33 +1,34 @@
-<?php include '../layout/header.php';
-include '../process/db.php';?>
+<?php include '../layout/header.php';?>
 
     <section id="content" class="section">
       <div class="container">
         <!-- Bagian atas -->
         <?php
-
         session_start();
-
-        
-        $query = mysqli_query($con, "SELECT * FROM user WHERE username='$username' 
-                  AND password='$password'") or die(mysqli_error($con)); 
-
+        include('../process/db.php');
+        $user = $_SESSION['user'];
+        $id = $user['id'];  
+        $query = mysqli_query($con, "SELECT * FROM user WHERE id = '$id'") or die(mysqli_error($con)); 
         $data = mysqli_fetch_assoc($query); 
-          
-        echo '<div class="head-content">
+        ?>
+        <div class="head-content">
             <h1 class="title">
-              Welcome, User !
+              Welcome, <?php echo $data['username'];?> !
             </h1>
 
             <div class="columns">
               <div class="column is-2">
                 <figure class="image is-128x128">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                    <?php if($data['profile_image']==NULL): ?>
+                      <img class="is-rounded" src="https://bulma.io/images/placeholders/480x480.png">
+                    <?php else: ?>
+                      <img class="is-rounded" src="../images/<?php echo $data['profile_image'];?>">
+                    <?php endif; ?>
                 </figure>
               </div>
               <div class="column">
                 <h2 class="title">
-                  ' .$data['nama_user'].'              
+                  <?php echo $data['nama_user'];?>
                 </h2>
                   <a href="./menu.php">
                     <button class="button is-success">
@@ -41,41 +42,44 @@ include '../process/db.php';?>
                   </a>
               </div>
             </div>
-          </div> ';
-        ?>
+          </div>
+        
         
         <!-- Bagian tengah -->
 
         <?php
-           $query = mysqli_query($con, "SELECT * FROM menu") or die(mysqli_error($con));
-           if(mysqli_num_rows($query) == 0) {
+           $data2 = mysqli_query($con, "SELECT * FROM menu") or die(mysqli_error($con));
+           if(mysqli_num_rows($data2) == 0) {
             echo '<tr><td colspan="7">Tidak ada menu</td></tr>';
           }
           else {
             $no = 1;
-            while($data = mysqli_fetch_assoc($query)) {
-              echo '<div class="kotak">
+            while($data3 = mysqli_fetch_assoc($data2)) {
+          ?>
+           <div class="kotak">
                       <div class="columns">
                         <div class="column is-2">
                           <figure class="image is-128x128">
-                            <img src="' .$data['gambar'].'">
+                            <img src="<?php echo $data3['gambar'];?>">
                           </figure>
                         </div>
-                        <input type="hidden" name="id" value='.$data['id'].'?>
+                        <input type="hidden" name="id" value="<?php echo $data3['id'];?>">
                           <div class="column">
-                            <h3 class="title">' .$data['nama_makanan'].'</h3>
-                            <p class="subtitle"> '.$data['promo'].'</p>
-                            <button class="button is-success">
-                              Get It!
-                            </button>
+                            <h3 class="title"> <?php echo $data3['nama_makanan'];?></h3>
+                            <p class="subtitle"> <?php echo $data3['promo'];?></p>
+                            <a href="./order.php">  
+                              <button class="button is-success">
+                                Get It!
+                              </button>
                             </a>
                           </div>
                       </div>
-                    </div>';
-                  $no++;
+                    </div>
+            <?php
               }
             }
-        ?>
+            ?>
+        
 
         <!--
         <section class="section">
