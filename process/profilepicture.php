@@ -1,4 +1,3 @@
-
 <?php
 if (isset($_POST['save_profile'])) {
     include('../process/db.php');
@@ -41,5 +40,5 @@ if (isset($_POST['save_profile'])) {
     }
   }else{
     echo '<script>window.history.back()</script>';
-}
+  }
 ?>

@@ -40,7 +40,7 @@
                   <?php if($data['gambar']==NULL): ?>
                     <img class="img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png" onClick="triggerClick()" id="profileDisplay">
                   <?php else: ?>
-                    <img class="img" src="../images/<?php echo $data['gambar'];?>" onClick="triggerClick()" id="profileDisplay">
+                    <img class="img" src="../../images/<?php echo $data['gambar'];?>" onClick="triggerClick()" id="profileDisplay">
                   <?php endif; ?>
                 </figure>
                 <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
@@ -59,7 +59,7 @@
   
         <div class="field">
           <div class="control">
-            <button type="submit" class="button is-link">Update</button>
+            <button type="submit" class="button is-link" name="update">Update</button>
           </div>
         </div>
       </form></div>
