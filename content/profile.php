@@ -64,7 +64,7 @@
                 }else if($data['jenis_kelamin']==1){
                   echo 'Female';
                 }else{
-                  echo 'Non Binary';
+                  echo 'Rather not say';
                 }?>
             </p>
 
