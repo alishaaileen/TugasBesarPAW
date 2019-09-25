@@ -19,11 +19,11 @@
             <div class="columns">
               <div class="column is-2">
                 <figure class="image is-128x128">
-                    <?php if($data['profile_image']==NULL): ?>
-                      <img class="is-rounded" src="https://bulma.io/images/placeholders/480x480.png">
-                    <?php else: ?>
-                      <img class="is-rounded" src="../images/<?php echo $data['profile_image'];?>">
-                    <?php endif; ?>
+                  <?php if($data['profile_image']==NULL): ?>
+                    <img class="is-rounded img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png">
+                  <?php else: ?>
+                    <img class="is-rounded img" src="../images/<?php echo $data['profile_image'];?>">
+                  <?php endif; ?>
                 </figure>
               </div>
               <div class="column">

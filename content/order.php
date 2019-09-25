@@ -52,8 +52,7 @@
             Buy Item
           </button>
         </form>
-        </br>
-        <a href="./menu.php">
+        <a href="../menu.php">
             <button class="button is-light is-medium" style="border-radius: 150px;">
               Cancel
             </button>

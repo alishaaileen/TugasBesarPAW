@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['addOrder'])){
-    include('./db.php');
+    include('../process/db.php');
 
     $nama_makanan = $_POST['nama_makanan'];
     $jumlah = $_POST['jumlah'];
