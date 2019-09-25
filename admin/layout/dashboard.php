@@ -12,50 +12,62 @@ echo '<!DOCTYPE html>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+  <title>Admin Page</title>
     
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-	
-	<!-- SCRIPT -->
+    
+    <!-- SCRIPT -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 </head>
 <body>
-	<div class="backgroundAll"></div>
-	<div id="sidebar">
-		<div class="sideheader">
-			<div class="name">
-				<h1>Company Logo</h1>
-				<p>Company name</p>
-			</div>
-			<div class="hamburgerbar">
-				<a href="#" onclick="hamburgerFunc()">
-					<div>
-						<div class="bar topbar"></div>
-						<div class="bar middlebar"></div>
-						<div class="bar bottombar"></div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="sidebody">
-			<div class="sidebodypart">
-				<ul>
-					<li id="dashboardTab"><a href="index.php"><p>Dashboard</p></a></li>
-					<li id="listUser"><a href="./listMenu.php"><p>Data Menu</p></a></li>
-					<li id="userTab"><a href="./tambahMenu.php"><p>Ubah Menu</p></a></li>
-					<li id="list-pegawai"><a href="./listPegawai.php"><p>List Buku</p></a></li>
-				</ul>
-			</div>
-		</div>
-  </div>
-  <div id="navbar">
-    <div class="barinfo">
-      <a href="../proses/prosesLogout.php"><button class="button is-danger">Logout</button></a>
+  <div class="backgroundAll"></div>
+  
+  <div class="columns">
+    <div class="column is-2">
+      <aside id="sidebar" class="menu">
+        <div class="profile">
+          <figure class="image is-64x64">
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+          </figure>
+          <p class="title is-5">
+            Admin
+          </p>
+        </div>
+
+        <p class="menu-label">
+          Administration
+        </p>
+        <ul class="menu-list">
+          <li>
+            <a>Krabby Menu</a>
+            <ul>
+              <li id="view-menu"><a href="viewMenu.php">View Menu</a></li>
+              <li id="edel-menu"><a href="edelMenu.php">Edit/Delete Menu</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p class="menu-label">
+          Transactions
+        </p>
+        <ul class="menu-list">
+          <li id="order-history"><a href="orderHistory.php">Order History</a></li>
+        </ul>
+        <p class="menu-label">
+            Account
+          </p>
+          <ul class="menu-list">
+            <button style="width: 60%; margin: 0 20px; border-radius: 50px;"
+                    class="button is-danger">
+              Log Out
+            </button>
+          </ul>
+      </aside>
     </div>
-  </div>
+    <div class="column">
+
 </body>
 <script src="script/script.js"></script>
 </html>'

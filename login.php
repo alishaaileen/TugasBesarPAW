@@ -105,7 +105,7 @@ else {
     $query = mysqli_query($con, "SELECT * FROM user WHERE username = '$username' Limit 1") or die(mysqli_error($con));
   
     if(mysqli_num_rows($query) == 0) {
-      echo '<script>alert("Username not found"); window.location = "../login_page.php"</script>';
+      echo '<script>alert("Username not found"); window.location = "login.php"</script>';
     }
     else {
       $user = mysqli_fetch_assoc($query);

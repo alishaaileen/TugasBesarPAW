@@ -52,9 +52,9 @@ else {
         <div class="content">
           <form name="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="field">
-              <label class="label">Email</label>
+              <label class="label">Username</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Email" name="email">
+                <input class="input" type="text" placeholder="Username" name="username">
               </div>
             </div>
             
@@ -65,7 +65,6 @@ else {
               </div>
             </div>
             <p style="display: none;" id="incorrect" class="help is-danger">Incorrect username or password</p>
-            <p style="display: none;" id="unverified" class="help is-danger">Please verify your email first!</p>
             <div class="field">
               <div class="control">
                 <button type="submit" class="button is-link" name="login">Log In</button>
@@ -94,32 +93,22 @@ else {
 </html>
 
 <?php
-  $email = $password = "";
+  $username = $password = "";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = test_input($_POST["email"]);
+    $username = test_input($_POST["username"]);
     $password = test_input($_POST["password"]);
-  
-    $query = mysqli_query($con, "SELECT * FROM data WHERE email = '$email' Limit 1") or die(mysqli_error($con));
-  
-    if(mysqli_num_rows($query) == 0) {
-      echo '
-      <script type="text/javascript">
-        isInvalid("incorrect");
-      </script>';
+    
+    if($username == "admin" && $password == "admin") {
+        $_SESSION['isLogin'] = true;
+        $_SESSION['user'] = $user;
+        echo 'window.location = "dashboard"</script>';
     }
     else {
-      $user = mysqli_fetch_assoc($query);
-      if(password_verify($password, $user['Password'])) {
-          $_SESSION['isLogin'] = true;
-          $_SESSION['user'] = $user;
-          echo 'window.location = "dashboard"</script>';
-        } else {
-          echo '
-            <script type="text/javascript">
-              isInvalid("incorrect");
-            </script>';
-      }
+        echo '
+        <script type="text/javascript">
+          isInvalid("incorrect");
+        </script>';
     }
   }
   
