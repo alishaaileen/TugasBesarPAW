@@ -42,7 +42,7 @@ include '../process/db.php';?>
         <!-- Bagian tengah -->
 
         <?php
-           $query = mysqli_query($con, "SELECT * FROM promo") or die(mysqli_error($con));
+           $query = mysqli_query($con, "SELECT * FROM menu") or die(mysqli_error($con));
            if(mysqli_num_rows($query) == 0) {
             echo '<tr><td colspan="7">Tidak ada menu</td></tr>';
           }
@@ -58,8 +58,8 @@ include '../process/db.php';?>
                         </div>
                         <input type="hidden" name="id" value='.$data['id'].'?>
                           <div class="column">
-                            <h3 class="title">' .$data['nama_promo'].'</h3>
-                            <p class="subtitle"> '.$data['deskripsi_promo'].'</p>
+                            <h3 class="title">' .$data['nama_makanan'].'</h3>
+                            <p class="subtitle"> '.$data['promo'].'</p>
                             <button class="button is-success">
                               Get It!
                             </button>
