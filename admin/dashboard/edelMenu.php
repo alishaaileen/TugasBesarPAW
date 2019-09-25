@@ -4,7 +4,7 @@
 ?>
 
 <div class="content">
-  <h1 class="title is-1">Edit/Delete Menu</h1>
+  <h1 class="title is-1">Edit Menu</h1>
 
    <table class="userListTable">
     <tr>
@@ -13,7 +13,7 @@
       <th>Description</th>
       <th>Picture</th>
       <th>Promo</th>
-      <th>Action</th>
+      <th></th>
     </tr>
     <?php
     $query = mysqli_query($con, "SELECT * FROM menu") or die(mysqli_error($con));
@@ -35,7 +35,6 @@
               </td>
               <td>'.$data['promo'].'</td>
               <td><a href="editMenu.php?id='.$data['id'].'"><button class="button is-link">Edit</button></a>
-              <a href="../proses/deleteMenu.php?id='.$data['id'].'" onclick="return confirm(\'Anda akan menghapus menu '.$data['nama_makanan'].'. Klik untuk melanjutkan\')"><button class="button is-danger">Hapus</button></a></td>
               </tr>';
               $no++;
           }
