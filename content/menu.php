@@ -26,7 +26,7 @@
                       <div class="columns">
                         <div class="column is-2">
                           <figure class="image is-128x128">
-                            <img src="'.$data['gambar'].'">
+                            <img src="../images/'.$data['gambar'].'">
                           </figure>
                         </div>
                           <input type="hidden" name="id" value='.$data['id'].'?>

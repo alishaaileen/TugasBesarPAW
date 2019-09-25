@@ -30,7 +30,7 @@
               <td>'.$data['deskripsi'].'</td>
               <td>
                 <figure class="image is-128x128">
-                <img src="'.$data['gambar'].'">
+                <img src="../../images/'.$data['gambar'].'">
                 </figure>
               </td>
               <td>'.$data['promo'].'</td>

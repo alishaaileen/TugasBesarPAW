@@ -1,5 +1,5 @@
 <?php if(isset($_GET['id'])){
-    include('./db.php'); 
+    include('../process/db.php'); 
  
     $id = $_GET['id'];
     $delete = mysqli_query($con,"DELETE FROM order_menu WHERE id='$id'")or die(mysqli_error($con));

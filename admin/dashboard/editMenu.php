@@ -14,7 +14,7 @@
     ?>
 
     <div style="width: 60%">
-      <form action="../../proses/prosesEditMenu.php">
+      <form action="../proses/prosesEditMenu.php" method="POST" enctype="multipart/form-data">
         <div class="field">
           <label class="label">Menu Name</label>
           <div class="control">
@@ -32,22 +32,19 @@
   
         <div class="field">
           <label class="label">Gambar</label>
-          <div class="control">
-          <div class="field">
-              <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-              <div class="control has-text-centered">
-                <figure class="image is-128x128 is-inline-block">
-                  <?php if($data['gambar']==NULL): ?>
-                    <img class="img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png" onClick="triggerClick()" id="profileDisplay">
-                  <?php else: ?>
-                    <img class="img" src="../../images/<?php echo $data['gambar'];?>" onClick="triggerClick()" id="profileDisplay">
-                  <?php endif; ?>
-                </figure>
-                <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
-                <p>Click on Image to Browse Picture</p>
-              </div>
+            <div class="file is-boxed">
+              <label class="file-label">
+                <input class="file-input" type="file" name="gambar" id="gambar">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+              </label>
             </div>
-          </div>
         </div>
   
         <div class="field">

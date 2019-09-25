@@ -21,7 +21,7 @@
         <div class="columns">
           <div class="column is-2">
             <figure class="image is-480x480">
-              <img src="<?php echo $data["gambar"]; ?>">              
+              <img src="../images/<?php echo $data["gambar"]; ?>">              
             </figure>
           </div>
           <div class="column">
@@ -54,8 +54,7 @@
             Buy Item
           </button>
         </form>
-        </br>
-        <a href="./menu.php">
+        <a href="../content/menu.php">
             <button class="button is-light is-medium" style="border-radius: 150px;">
               Cancel
             </button>

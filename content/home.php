@@ -18,7 +18,7 @@
 
             <div class="columns">
               <div class="column is-2">
-                <figure class="image is-128x128">
+                <figure class="image is-480x480 is-square">
                   <?php if($data['profile_image']==NULL): ?>
                     <img class="is-rounded img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png">
                   <?php else: ?>
@@ -60,7 +60,7 @@
                       <div class="columns">
                         <div class="column is-2">
                           <figure class="image is-128x128">
-                            <img src="<?php echo $data3['gambar'];?>">
+                            <img src="../images/<?php echo $data3['gambar'];?>">
                           </figure>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $data3['id'];?>">
