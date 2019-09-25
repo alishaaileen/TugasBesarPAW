@@ -170,7 +170,6 @@
                 <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
                 <p>Click on Image to Browse Picture</p>
               </div>
-              <p style="display: none" style="display: none" class="nama_user is-danger">This name is invalid</p>
             </div>
           </section>
           <footer class="modal-card-foot">
@@ -198,7 +197,7 @@
               <div class="control has-icons-right">
                 <input class="input" type="text" placeholder="Name" name="nama_user" value="<?php echo $data['nama_user']; ?>">
               </div>
-              <p style="display: none" style="display: none" class="nama_user is-danger">This name is invalid</p>
+              <p style="display: none" class="nama_user is-danger">This name is invalid</p>
             </div>
   
             <div class="field">
