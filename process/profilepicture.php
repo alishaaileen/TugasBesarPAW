@@ -33,10 +33,10 @@ if (isset($_POST['save_profile'])) {
         if($input){
             echo '<script>alert("Profile Has Been Edited!"); window.location = "../content/profile.php"</script>';
         }else{
-            echo '<script>alert("Update Failed!");<script>window.location = "../content/profile.php"</script>';
+            echo '<script>alert("Update Failed!");window.location = "../content/profile.php"</script>';
         }
       } else {
-        echo '<script>alert("Uploading Failed!");<script>window.location = "../content/profile.php"</script>';
+        echo '<script>alert("Uploading Failed!");window.location = "../content/profile.php"</script>';
       }
     }
   }else{

@@ -1,6 +1,6 @@
 <?php include '../layout/header.php';?>
-<?php session_start(); ?>
-  <?php        
+  <?php
+    session_start();        
     include('../process/db.php');
     $user = $_SESSION['user'];
     $id = $user['id'];
@@ -21,11 +21,11 @@
         <div class="columns is-mobile">
           <div class="column is-2">
             <div class="field">
-              <figure class="image is-480x480">
+              <figure class="image is-480x480 is-square">
                 <?php if($data['profile_image']==NULL): ?>
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/480x480.png">
+                  <img class="is-rounded img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png">
                 <?php else: ?>
-                  <img class="is-rounded" src="../images/<?php echo $data['profile_image'];?>">
+                  <img class="is-rounded img" src="../images/<?php echo $data['profile_image'];?>">
                 <?php endif; ?>
               </figure>
             </div>
@@ -64,7 +64,7 @@
                 }else if($data['jenis_kelamin']==1){
                   echo 'Female';
                 }else{
-                  echo '[REDACTED]';
+                  echo 'Non Binary';
                 }?>
             </p>
 
@@ -83,7 +83,7 @@
             <p class="subtitle has-text-weight-light">
             <?php if($data['bio']==NULL)
                 {
-                  echo '[REDACTED]';
+                  echo 'Empty';
                 }else{
                   echo $data['bio'];
                 }?>
@@ -102,7 +102,7 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">Change Password</p>
-            <button class="delete modal-close" aria-label="close"></button>
+            <button class="delete modal-close close" aria-label="close"></button>
           </header>
   
           <section class="modal-card-body">
@@ -135,7 +135,7 @@
   
           <footer class="modal-card-foot">
             <button type="submit" class="button is-success" name="update" onclick="return cekPasswordChange()">Save changes</button>
-            <button class="button">Cancel</button>
+            <button class="button close">Cancel</button>
           </footer>
         </div>
       </div>
@@ -159,20 +159,23 @@
             <?php endif; ?>
             <div class="field">
               <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-              <div class="control has-icons-right">
-                <figure class="image is-480x480">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/480x480.png" onClick="triggerClick()" id="profileDisplay">
+              <div class="control has-icons-right has-text-centered">
+                <figure class="image is-256x256 is-inline-block">
+                  <?php if($data['profile_image']==NULL): ?>
+                    <img class="is-rounded img" src="https://img.pngio.com/blank-avatarpng-avatar-png-486_489.png" onClick="triggerClick()" id="profileDisplay">
+                  <?php else: ?>
+                    <img class="is-rounded img" src="../images/<?php echo $data['profile_image'];?>" onClick="triggerClick()" id="profileDisplay">
+                  <?php endif; ?>
                 </figure>
                 <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
                 <p>Click on Image to Browse Picture</p>
               </div>
               <p style="display: none" style="display: none" class="nama_user is-danger">This name is invalid</p>
             </div>
-
           </section>
           <footer class="modal-card-foot">
             <button type="submit" class="button is-success" name="save_profile">Save User</button>
-            <button class="button">Cancel</button>
+            <button class="button close">Cancel</button>
           </footer>
         </div>
       </div>
@@ -185,7 +188,7 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">Edit Info</p>
-            <button class="delete modal-close" aria-label="close"></button>
+            <button class="delete modal-close close" aria-label="close"></button>
           </header>
   
           <section class="modal-card-body">
@@ -269,7 +272,7 @@
           </section>
           <footer class="modal-card-foot">
             <button type="submit" class="button is-success" name="update" onclick="return cekAll()">Save changes</button>
-            <button class="button">Cancel</button>
+            <button class="button close">Cancel</button>
           </footer>
         </div>
       </div>
