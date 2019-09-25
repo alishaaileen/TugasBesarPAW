@@ -5,9 +5,14 @@ include '../process/db.php';?>
       <div class="container">
         <!-- Bagian atas -->
         <?php
-        $query = mysqli_query($con, "SELECT * FROM user") or die(mysqli_error($con));
 
-        $data = mysqli_fetch_assoc($query);
+        session_start();
+
+        
+        $query = mysqli_query($con, "SELECT * FROM user WHERE username='$username' 
+                  AND password='$password'") or die(mysqli_error($con)); 
+
+        $data = mysqli_fetch_assoc($query); 
           
         echo '<div class="head-content">
             <h1 class="title">
