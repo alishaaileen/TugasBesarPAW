@@ -28,7 +28,7 @@ if(isset($_POST['update'])){
       $msg_class = "alert-danger";
     }
     if (empty($error)) {
-        if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
+        if(move_uploaded_file($_FILES["gambar"]["name"], $target_file)) {
             $input = mysqli_query($con,"UPDATE menu SET nama_makanan='$nama_makanan', deskripsi='$deskripsi', gambar='$gambar', 
             nama_promo='$nama_promo' WHERE id='$id'")or die(mysqli_error($con));
 
