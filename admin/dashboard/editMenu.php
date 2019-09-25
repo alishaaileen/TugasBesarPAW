@@ -14,7 +14,7 @@
     ?>
 
     <div style="width: 60%">
-      <form action="">
+      <form action="../../proses/prosesEditMenu.php">
         <div class="field">
           <label class="label">Menu Name</label>
           <div class="control">
