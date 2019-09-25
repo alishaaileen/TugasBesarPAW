@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var rootEl = document.documentElement;
   var $modals = getAll('.modal');
   var $modalButtons = getAll('.modal-button');
-  var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+  var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .close');
   
   console.log($modals)
   console.log($modalButtons)

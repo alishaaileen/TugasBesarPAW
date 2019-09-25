@@ -9,7 +9,7 @@ echo '<!DOCTYPE html>
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link rel="stylesheet" href="../css/home.css">
-
+    
     <!-- SCRIPT -->
     <script src="../js/script.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
